@@ -31,7 +31,19 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+### Core Principles Alignment
+- AI-Native Todo Application: Verify implementation approach supports phased evolution from console app to cloud-native AI system
+- Progressive Enhancement: Confirm design builds cleanly on previous phases without breaking changes
+- Simplicity First: Validate approach avoids over-engineering and implements minimal viable solution
+- AI-Native Readiness: Ensure architecture supports future AI/agent integration requirements
+- DevOps Awareness: Verify design includes observability, monitoring, and operational readiness
+- Correctness: Confirm approach will meet phase-specific requirements and acceptance criteria
+
+### Phase-Specific Compliance
+- Verify implementation aligns with specific phase requirements (I-V)
+- Confirm security best practices for current phase (from Phase III onward)
+- Validate cost-aware architecture decisions
+- Ensure independent runnability of current phase
 
 ## Project Structure
 

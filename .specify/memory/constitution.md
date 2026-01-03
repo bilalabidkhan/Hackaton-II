@@ -1,55 +1,82 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT
+Version change: 1.0.0 → 1.1.0
+Modified principles:
+- Principle 1: Project Focus → AI-Native Todo Application
+- Principle 2: Progressive Enhancement → Progressive Enhancement
+- Principle 3: Simplicity First → Simplicity First
+- Principle 4: AI-Ready Design → AI-Native Readiness
+- Principle 5: DevOps Awareness → DevOps Awareness
+- Principle 6: Correctness → Correctness
+Added sections: Phase-specific constraints, Additional Constraints, Development Workflow
+Removed sections: None
+Templates requiring updates:
+- .specify/templates/plan-template.md ✅ updated
+- .specify/templates/spec-template.md ✅ updated
+- .specify/templates/tasks-template.md ✅ updated
+- .specify/templates/commands/*.md ⚠ pending
+Follow-up TODOs: None
+-->
+
+# AI-Native Todo Application Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### AI-Native Todo Application
+Every component and feature must support the overall goal of creating a phased todo application that evolves from an in-memory Python console app to a full-stack, AI-powered, cloud-native system with Kubernetes and event-driven architecture. All architectural decisions must consider the end-to-end journey from Phase I to Phase V.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Progressive Enhancement
+Each phase must build cleanly on the previous one. New features and infrastructure components must be designed to integrate seamlessly with existing functionality without breaking changes. Every phase must be runnable independently while maintaining compatibility with subsequent phases.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Simplicity First
+Prefer simple, readable solutions before abstraction. Implement the minimal viable solution that meets requirements. Avoid premature optimization and over-engineering. Start with basic implementations and add complexity only when justified by clear requirements.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### AI-Native Readiness
+Design decisions must support future AI/agent integration. All components must be observable, deterministic, and provide clear interfaces for AI agents to interact with. Architecture must support natural language processing, intent parsing, and safe execution of AI-driven actions.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### DevOps Awareness
+Infrastructure and deployment are treated as first-class concerns. Every component must be designed with observability, monitoring, and operational readiness in mind. Deployment processes must be automated, repeatable, and consistent across all phases.
 
-### [PRINCIPLE_6_NAME]
+### Correctness
+Each phase must function independently and meet its stated requirements. All implementations must be thoroughly tested and validated. Code must be correct, reliable, and meet specified acceptance criteria before being considered complete.
 
+## Additional Constraints
 
-[PRINCIPLE__DESCRIPTION]
+### Phase-Specific Requirements
+- Phase I: In-memory console app in Python with zero external dependencies
+- Phase II: Full-stack with Next.js frontend, FastAPI backend, SQLModel ORM, Neon DB
+- Phase III: AI integration with OpenAI ChatKit, Agents SDK, natural language processing
+- Phase IV: Kubernetes deployment with Helm charts, Minikube, observability
+- Phase V: Production-ready with Kafka, Dapr, DigitalOcean DOKS, scalability
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Technology Standards
+- Code Quality: Clear separation of concerns, meaningful naming, type hints where applicable
+- Documentation: README per phase, inline comments only for non-obvious logic
+- Testing: Manual/basic unit tests (Phases I-II), automated tests (Phases III+)
+- Consistency: Consistent command structure and todo schema across all phases
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Security & Compliance
+Security best practices required from Phase III onward (API keys, secrets, RBAC). No breaking changes between phases without migration strategy. Cost-aware architecture to avoid unnecessary complexity.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Development Workflow
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Implementation Guidelines
+- Each phase must be runnable independently
+- No breaking changes between phases without migration strategy
+- Security best practices (API keys, secrets, RBAC) required from Phase III onward
+- Cost-aware architecture (avoid unnecessary complexity)
+
+### Quality Gates
+- Phase I: Works fully in-memory with zero external dependencies
+- Phase II: Supports real users and persistent storage
+- Phase III: Enables natural language todo interaction reliably
+- Phase IV: Runs locally on Kubernetes without errors
+- Phase V: Production-ready, scalable, and observable
+
+### Review Process
+All changes must demonstrate clear learning progression and real-world readiness. Code reviews must verify compliance with architectural principles and phase-specific requirements.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Constitution supersedes all other practices. All architectural decisions must align with the core principles and phase-specific requirements. Amendments require documentation, approval, and migration plan if affecting existing implementations. All PRs and reviews must verify compliance with this constitution. Complexity must be justified with clear benefits to the overall project goals.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.1.0 | **Ratified**: 2026-01-03 | **Last Amended**: 2026-01-03

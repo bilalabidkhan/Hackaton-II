@@ -12,6 +12,13 @@ description: "Task list template for feature implementation"
 
 **Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
 
+**Constitution Alignment**: All tasks must align with AI-Native Todo Application constitution principles:
+- Correctness: Each task must contribute to meeting phase-specific requirements
+- Progressive Enhancement: Tasks should build on previous phases without breaking changes
+- Simplicity First: Tasks should implement minimal viable solutions
+- AI-Native Readiness: Tasks should consider future AI integration needs
+- DevOps Awareness: Tasks should include observability and operational readiness
+
 ## Format: `[ID] [P?] [Story] Description`
 
 - **[P]**: Can run in parallel (different files, no dependencies)
@@ -150,12 +157,13 @@ Examples of foundational tasks (adjust based on your project):
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] TXXX [P] Documentation updates in docs/
-- [ ] TXXX Code cleanup and refactoring
+- [ ] TXXX [P] Documentation updates in docs/ (aligns with constitution: documentation per phase)
+- [ ] TXXX Code cleanup and refactoring (aligns with constitution: simplicity first)
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
-- [ ] TXXX Security hardening
+- [ ] TXXX Security hardening (aligns with constitution: security from Phase III)
 - [ ] TXXX Run quickstart.md validation
+- [ ] TXXX Verify constitution compliance for all implemented features
 
 ---
 
