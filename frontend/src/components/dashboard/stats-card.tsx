@@ -52,7 +52,7 @@ const StatsCard: React.FC<StatsCardProps> = ({ stats, isLoading = false }) => {
 
   return (
     <motion.div
-      className="glass p-6 rounded-2xl border border-white/10 shadow-lg"
+      className="glass py-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -62,71 +62,68 @@ const StatsCard: React.FC<StatsCardProps> = ({ stats, isLoading = false }) => {
       </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Completion Rate Card */}
-        <motion.div className="text-center p-4" variants={itemVariants}>
-          <div className="text-3xl font-bold text-white mb-1">
-            {stats.completionRate}%
+       {/* Completion Rate Card */}
+        <motion.div
+         className="text-center border rounded-2xl p-10 shadow-lg bg-gradient-to-br from-green-500 to-green-600 hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+         variants={itemVariants}>
+          {/* Icon */}
+           <div className="flex items-center justify-center mb-4">
+            <span className="w-14 h-14 flex items-center justify-center rounded-full bg-white/20 text-white text-2xl shadow-lg">
+             ✅
+            </span>
+           </div>
+          {/* Percentage */}
+           <div className="text-3xl font-bold text-white mb-2">{stats.completionRate}%</div>
+            <div className="text-white/80 text-sm mb-3">Completion Rate</div>
+            <div className="mt-3 w-full bg-white/20 rounded-full h-2.5">
+             <div className="bg-blue-700 h-2.5 rounded-full" style={{ width: `${stats.completionRate}%` }}></div>
+            </div>
+        </motion.div>
+
+       {/* Weekly Progress Card */}
+        <motion.div
+         className={`text-center border rounded-2xl p-10 shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300 ${
+         stats.weeklyProgress >= 0 ? 'bg-gradient-to-br from-blue-500 to-blue-600' : 'bg-gradient-to-br from-red-500 to-red-600'
+         }`}
+         variants={itemVariants}>
+         {/* Icon */}
+          <div className="flex items-center justify-center mb-4">
+           <span className="w-14 h-14 flex items-center justify-center rounded-full bg-white/20 text-white text-2xl shadow-lg">
+            {stats.weeklyProgress >= 0 ? '📈' : '📉'}
+           </span>
           </div>
-          <div className="text-neutral-400 text-sm">Completion Rate</div>
-          <div className="mt-3 w-full bg-gray-700 rounded-full h-2.5">
-            <div
-              className="bg-gradient-to-r from-primary-500 to-primary-600 h-2.5 rounded-full"
-              style={{ width: `${stats.completionRate}%` }}
-            ></div>
+          <div className={`text-3xl font-bold mb-1 text-white`}>
+           {stats.weeklyProgress >= 0 ? '+' : ''}{stats.weeklyProgress}%
+          </div>
+          <div className="text-white/80 text-sm mb-2">Weekly Progress</div>
+          <div className="mt-2 text-xs text-white/70">
+           {stats.weeklyProgress >= 0
+            ? '↑ Improved from last week'
+            : '↓ Needs improvement'}
           </div>
         </motion.div>
 
-        {/* Weekly Progress Card */}
-        <motion.div className="text-center p-4" variants={itemVariants}>
-          <div className={`text-3xl font-bold mb-1 ${
-            stats.weeklyProgress >= 0 ? 'text-success-400' : 'text-error-400'
-          }`}>
-            {stats.weeklyProgress >= 0 ? '+' : ''}{stats.weeklyProgress}%
-          </div>
-          <div className="text-neutral-400 text-sm">Weekly Progress</div>
-          <div className="mt-2 text-xs text-neutral-500">
-            {stats.weeklyProgress >= 0
-              ? '↑ Improved from last week'
-              : '↓ Needs improvement'}
-          </div>
-        </motion.div>
-
-        {/* Task Count Card */}
-        <motion.div className="text-center p-4" variants={itemVariants}>
-          <div className="text-3xl font-bold text-white mb-1">
-            {stats.totalTasks}
-          </div>
-          <div className="text-neutral-400 text-sm">Total Tasks</div>
-          <div className="mt-2 text-xs text-neutral-500">
+       {/* Task Count Card */}
+        <motion.div
+         className="text-center border rounded-2xl p-10 shadow-lg bg-gradient-to-br from-purple-500 to-purple-600 hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+         variants={itemVariants}>
+          {/* Icon */}
+           <div className="flex items-center justify-center mb-4">
+            <span className="w-14 h-14 flex items-center justify-center rounded-full bg-white/20 text-white text-2xl shadow-lg">
+             🗂️
+            </span>
+           </div>
+           <div className="text-3xl font-bold text-white mb-1">{stats.totalTasks}</div>
+           <div className="text-white/80 text-sm mb-2">Total Tasks</div>
+           <div className="mt-2 text-xs text-white/70">
             {stats.completedTasks} completed
-          </div>
+           </div>
         </motion.div>
       </div>
 
-      {/* Chart Visualization - Progress over time */}
-      <motion.div className="mt-6 pt-4 border-t border-white/10" variants={itemVariants}>
-        <h3 className="text-lg font-semibold text-white mb-4">Weekly Progress</h3>
-        <div className="flex items-end h-24 gap-1 md:gap-2">
-          {[...Array(7)].map((_, index) => {
-            // Generate sample data - in a real app this would come from actual stats
-            const dayProgress = Math.floor(Math.random() * 100); // Placeholder data
-            const dayLabels = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-            return (
-              <div key={index} className="flex flex-col items-center flex-1">
-                <div
-                  className="w-full bg-gradient-to-t from-primary-500 to-primary-400 rounded-t-md min-h-[5px]"
-                  style={{ height: `${dayProgress}%` }}
-                ></div>
-                <span className="text-xs text-neutral-400 mt-1">{dayLabels[index]}</span>
-              </div>
-            );
-          })}
-        </div>
-      </motion.div>
-
       {/* Trending Tasks Section */}
       {stats.trendingTasks && stats.trendingTasks.length > 0 && (
-        <motion.div className="mt-6 pt-4 border-t border-white/10" variants={itemVariants}>
+        <motion.div className="mt-16 pt-4 border-t border-white/10" variants={itemVariants}>
           <h3 className="text-lg font-semibold text-white mb-3">Trending Tasks</h3>
           <ul className="space-y-2">
             {stats.trendingTasks.map((task, index) => (

@@ -1,40 +1,30 @@
-'use client';
-
-import React from 'react';
-
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-white border-t border-neutral-200">
-      <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <div className="md:flex md:items-center md:justify-between">
-          <div className="flex justify-center md:justify-start">
-            <p className="text-sm text-neutral-600">
-              &copy; {currentYear} Todo App. All rights reserved.
-            </p>
-          </div>
-          <div className="mt-4 md:mt-0 flex justify-center space-x-6">
-            <a
-              href="#"
-              className="text-neutral-400 hover:text-neutral-500 text-sm"
-            >
-              Terms
-            </a>
-            <a
-              href="#"
-              className="text-neutral-400 hover:text-neutral-500 text-sm"
-            >
-              Privacy
-            </a>
-            <a
-              href="#"
-              className="text-neutral-400 hover:text-neutral-500 text-sm"
-            >
-              Contact
-            </a>
-          </div>
+    <footer className="bg-gray-800 text-white py-10">
+      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center py-8">
+        
+        {/* Branding */}
+        <div className="mb-6 md:mb-0">
+          <h2 className="text-xl font-bold">TodoPro</h2>
+          <p className="text-sm text-gray-400">Stay organized, stay productive.</p>
         </div>
+
+        {/* Navigation */}
+        <div className="flex space-x-6 mb-6 md:mb-0">
+          <a href="#" className="hover:text-yellow-300 transition">Home</a>
+          <a href="" className="hover:text-yellow-300 transition">Features</a>
+          <a href="/todos" className="hover:text-yellow-300 transition">Todos</a>
+          <a href="/" className="hover:text-yellow-300 transition">Privacy</a>
+        </div>
+
+        {/* Contact */}
+        <div className="text-sm text-gray-400">
+          Support: support@todopro.com
+        </div>
+      </div>
+
+      <div className="text-center text-gray-500 mt-6 text-sm py-">
+        © 2026 TodoPro. All rights reserved.
       </div>
     </footer>
   );

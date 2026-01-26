@@ -10,6 +10,7 @@ import StatsCard from '@/components/dashboard/stats-card';
 import { UserGreeting } from '@/types/dashboard';
 import { TodoItem, getProductivityMetrics, generateProductivityInsight, getWeeklyProductivityInsights } from '@/utils/productivity-insights';
 import { getTimeBasedGreeting } from '@/utils/time-greeting';
+import { useRouter } from 'next/navigation';
 
 interface Todo {
   id: string;
@@ -27,6 +28,15 @@ const TodoDashboard = () => {
   const [error, setError] = useState<string | null>(null);
   const [showAddTodo, setShowAddTodo] = useState(false);
   const { user, signout, loading: authLoading } = useAuth();
+
+  const { isAuthenticated } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/auth/login');
+    }
+  }, [isAuthenticated]);
 
   // Load todos on component mount, only when auth is loaded
   useEffect(() => {

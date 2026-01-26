@@ -16,6 +16,14 @@ interface WelcomePanelProps {
   };
 }
 
+  const handleSignOut = async () => {
+    try {
+      await signout();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
+
 const WelcomePanel: React.FC<WelcomePanelProps> = ({
   user,
   greeting,
@@ -41,35 +49,31 @@ const WelcomePanel: React.FC<WelcomePanelProps> = ({
 
   return (
     <motion.div
-      className="glass p-6 rounded-2xl mb-8 border border-white/10 shadow-lg"
+      className="glass mb-8"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb- gap-4 sm:gap-0">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0">
+        <h1 className='text-4xl font-medium'>
+          Dashboard
+        </h1>
+        
         <motion.div variants={itemVariants}>
-          <p className="text-green-600 mt-1 font-semibold">
+          <p className="text-green-600 mt-1 font-semibold py-">
             Welcome back, {user.name || user.email || 'there'}!
           </p>
+
+          <button
+                   onClick={handleSignOut}
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-error-600 hover:bg-error-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-error-500 transition duration-200 mt-2"
+                  aria-label="Sign out"
+               >
+                  Logout          
+               </button>
         </motion.div>
 
-        {stats && (
-          <motion.div
-            className="mt-4 sm:mt-0 glass-sm p-3 rounded-lg backdrop-blur-sm"
-            variants={itemVariants}
-          >
-            <div className="flex space-x-6 text-sm">
-              <div>
-                <p className="text-neutral-400">Completion Rate</p>
-                <p className="text-white font-semibold">{stats.completionRate}%</p>
-              </div>
-              <div>
-                <p className="text-neutral-400">Weekly Progress</p>
-                <p className="text-white font-semibold">{stats.weeklyProgress}%</p>
-              </div>
-            </div>
-          </motion.div>
-        )}
+        
       </div>
 
       <motion.div variants={itemVariants}>
